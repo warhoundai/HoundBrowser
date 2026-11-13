@@ -67,3 +67,14 @@ def test_atomic_command_lease_and_restart_unknown(tmp_path):
 def test_unconfigured_credentials_fail_closed():
     with pytest.raises(ProtocolError):Settings(keys={},origins=['https://example.com'])
     with pytest.raises(ProtocolError):Settings(keys={'owner':'short'},origins=['https://example.com'])
+
+def test_viewer_uses_asgi_subprotocols_when_server_consumes_raw_header():
+    app=create_app(settings(),FakeBrowser)
+    async def consumed_header(scope,receive,send):
+        if scope['type']=='websocket':
+            scope={**scope,'headers':[(k,v) for k,v in scope['headers'] if k.lower()!=b'sec-websocket-protocol']}
+        await app(scope,receive,send)
+    with TestClient(consumed_header) as c:
+        sid=create(c);grant=c.post(f'/v1/browser/sessions/{sid}/viewer',headers=headers(),json={'frames':False}).json()
+        with c.websocket_connect(grant['path'],subprotocols=['houndbrowser','ticket.'+grant['ticket']]) as ws:
+            ws.send_text('command');assert ws.receive()['code']==4403

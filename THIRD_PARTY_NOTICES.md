@@ -10,6 +10,7 @@ Runtime dependencies are installed separately and retain their own licenses:
 | FastAPI | MIT |
 | Starlette | BSD-3-Clause |
 | Uvicorn | BSD-3-Clause |
+| wsproto | MIT |
 | HTTPX / HTTPCore | BSD-3-Clause |
 | Pydantic / pydantic-core | MIT |
 | AnyIO | MIT |

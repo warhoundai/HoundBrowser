@@ -227,7 +227,7 @@ def create_app(settings=None,browser_factory=Browser):
         return {'path':'/v1/browser/live','ticket':ticket,'expiresIn':60}
     @app.websocket('/v1/browser/live')
     async def live(ws:WebSocket):
-        protocols=[v.strip() for v in ws.headers.get('sec-websocket-protocol','').split(',')];ticket=next((v[7:] for v in protocols if v.startswith('ticket.')),'');grant=config.tickets.pop(ticket,None)
+        protocols=ws.scope.get('subprotocols',[]);ticket=next((v[7:] for v in protocols if v.startswith('ticket.')),'');grant=config.tickets.pop(ticket,None)
         if not grant or grant['expires']<=time.time():await ws.close(code=4401);return
         sid=grant['sid']
         try:own(sid,grant['tenant'])
