@@ -36,3 +36,4 @@ jobs:
           persist-credentials: false
       - run: docker build -t houndbrowser:test .
       - run: docker run --rm -i --network none --shm-size=1g --entrypoint python houndbrowser:test < scripts/container-offline-smoke.py
+      - run: HOUNDBROWSER_SMOKE_IMAGE=houndbrowser:test python3 scripts/container-smoke.py
