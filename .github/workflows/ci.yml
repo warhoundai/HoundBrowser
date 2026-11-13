@@ -27,7 +27,7 @@ jobs:
       - run: pytest -q
       - run: node --test sdk/js/*.test.mjs
       - run: python -m build
-      - run: pip-audit --strict
+      - run: pip-audit --strict -r requirements-dev.lock
   container:
     runs-on: ubuntu-24.04
     steps:

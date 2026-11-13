@@ -4,7 +4,7 @@ WORKDIR /app
 COPY pyproject.toml README.md LICENSE NOTICE ./
 COPY requirements-runtime.lock ./
 COPY src ./src
-RUN pip install --no-cache-dir --upgrade 'pip>=26.2' && pip install --no-cache-dir -r requirements-runtime.lock && pip install --no-cache-dir --no-deps . && python -m playwright install --with-deps chromium && useradd --uid 10001 --create-home browser && mkdir /data && chown browser:browser /data && chmod -R a+rX /app /root/.cache/ms-playwright && cp -r /root/.cache/ms-playwright /opt/playwright && chmod -R a+rX /opt/playwright
+RUN apt-get update && apt-get install -y --no-install-recommends libatomic1 ca-certificates && rm -rf /var/lib/apt/lists/* && pip install --no-cache-dir --upgrade 'pip>=26.2' && pip install --no-cache-dir -r requirements-runtime.lock && pip install --no-cache-dir --no-deps . && python -m playwright install --with-deps chromium && useradd --uid 10001 --create-home browser && mkdir /data && chown browser:browser /data && chmod -R a+rX /app /root/.cache/ms-playwright && cp -r /root/.cache/ms-playwright /opt/playwright && chmod -R a+rX /opt/playwright
 ENV PLAYWRIGHT_BROWSERS_PATH=/opt/playwright
 USER browser
 VOLUME ["/data"]

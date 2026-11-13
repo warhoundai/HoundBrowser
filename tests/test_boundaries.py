@@ -5,7 +5,8 @@ from houndbrowser.contracts import scope_manifest,check_url,command_body,Protoco
 from test_api import settings,FakeBrowser,headers,create,command
 from houndbrowser.api import create_app
 
-@pytest.mark.parametrize('url',['http://127.0.0.1','https://169.254.169.254','https://[::1]','https://10.0.0.1','https://192.168.1.1','https://localhost','https://internal.local','file:///etc/passwd','https://user:password@example.com','https://example.com:8443'])
+# Reserved example credentials are intentionally rejected by the boundary.
+@pytest.mark.parametrize('url',['http://127.0.0.1','https://169.254.169.254','https://[::1]','https://10.0.0.1','https://192.168.1.1','https://localhost','https://internal.local','file:///etc/passwd','https://user:password@example.com','https://example.com:8443']) # pragma: allowlist secret
 def test_private_network_and_non_web_destinations_are_blocked(url):
     with pytest.raises((PublicNetworkError,ValueError)):public_url(url)
 
