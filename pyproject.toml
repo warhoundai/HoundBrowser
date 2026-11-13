@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 authors = [{name = "WarHound AI"}]
-dependencies = ["fastapi>=0.121,<1", "uvicorn>=0.38,<1", "playwright==1.56.0", "httpx>=0.28.1,<0.29"]
+dependencies = ["fastapi>=0.121,<1", "uvicorn>=0.38,<1", "playwright==1.65.1", "httpx>=0.28.1,<0.29"]
 classifiers = ["Development Status :: 4 - Beta", "Programming Language :: Python :: 3", "Topic :: Internet :: WWW/HTTP :: Browsers"]
 
 [project.optional-dependencies]
