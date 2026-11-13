@@ -1,0 +1,8 @@
+HoundBrowser
+Copyright 2026 WarHound AI
+
+This product includes browser protocol, public-network validation, and execution
+components originally developed by WarHound AI and released under Apache 2.0.
+
+HoundBrowser uses Playwright and Chromium as dependencies. It is not affiliated
+with or endorsed by Microsoft, the Playwright maintainers, or Browser Use.

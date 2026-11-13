@@ -1,0 +1,17 @@
+name: Bug report
+description: Report reproducible behavior on a controlled fixture.
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and observed behavior
+      description: Include version and deployment configuration, with all credentials removed.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Controlled reproduction
+      description: Provide a minimal local fixture. Do not include a customer site or private capture.
+    validations:
+      required: true

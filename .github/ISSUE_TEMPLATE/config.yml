@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security reporting
+    url: https://github.com/warhoundai/HoundBrowser/blob/main/SECURITY.md
+    about: Read the private disclosure process before reporting a vulnerability.

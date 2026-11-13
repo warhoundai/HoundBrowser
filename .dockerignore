@@ -1,0 +1,8 @@
+.git
+.venv
+.env*
+*.sqlite3*
+__pycache__
+.pytest_cache
+dist
+node_modules

@@ -1,0 +1,1 @@
+{"name":"@warhoundai/houndbrowser","version":"0.1.0","private":true,"type":"module","license":"Apache-2.0","exports":"./client.mjs","files":["client.mjs"],"engines":{"node":">=22"},"scripts":{"test":"node --test *.test.mjs"}}
